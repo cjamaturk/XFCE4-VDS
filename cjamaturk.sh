@@ -16,25 +16,21 @@ sudo chmod 600 /etc/tightvncserver/passwd
 # VNC server'ı otomatik başlatma
 sudo systemctl enable tightvncserver@root.service
 
-# Serveo ile VNC server'ı dış ağda kullanılabilir hale getirme
-sudo apt install -y serveo
+# FRP kurulumu
+# 1. https://github.com/fatedier/frp/releases adresinden FRP'nin son sürümünü indirin ve kurun.
+# 2. FRP sunucu konfigürasyon dosyasını oluşturun ve düzenleyin (örneğin: `frps.ini`).
+# 3. FRP istemci konfigürasyon dosyasını oluşturun ve düzenleyin (örneğin: `frpc.ini`).
+
+# VNC server'ı FRP ile bağlama
+# frpc.ini dosyasında:
+# - `server_addr` : FRP sunucu IP adresini girin.
+# - `server_port` : FRP sunucu portunu girin.
+# - `local_port` : VNC server portunu (5901) girin.
+
+# FRP sunucu ve istemcisini başlatın
+sudo frps -c frps.ini &
+frpc -c frpc.ini &
 
 # PC bilgilerini alma
-ram=$(free -m | grep "Mem:" | awk '{print $2}')
-cpu=$(cat /proc/cpuinfo | grep "model name" | head -1 | awk '{print $4,$5,$6,$7,$8}')
-
-# Ekran bilgisi
-echo "Bağlantı Bilgileri:"
-echo "IP Adresi: $(curl ifconfig.me)"
-echo "Kullanıcı Adı: root"
-echo "Şifre: 123456"
-echo ""
-echo "PC Bilgileri:"
-echo "RAM: $ram MB"
-echo "İşlemci: $cpu"
-
-# Serveo ile VNC server'ı başlatma
-serveo --port 8080 --no-auth /etc/tightvncserver/xstartup
-
-# VNC server'ı arka planda çalıştırma
-nohup tightvncserver -geometry 1920x1080 :1 &
+ram=$(free -m | grep "Mem:" | awk '{print <span class="math-inline">2\}'\)
+cpu\=</span>(cat /proc/cpuinfo | grep "

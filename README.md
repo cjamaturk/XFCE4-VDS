@@ -82,6 +82,8 @@ ssh -R 1453:localhost:5901 serveo.net
 
 ![Serveo Port](https://raw.githubusercontent.com/cjamaturk/XFCE4-VDS/main/serveo2.png)
 
+"yes" yazıp ilerleyin.
+
 1453 yerine ne yazdıysanız VNC serverinize bağlanırken onu kullanacaksınız.
 
 Ben client olarak RealVNC kullandım.
